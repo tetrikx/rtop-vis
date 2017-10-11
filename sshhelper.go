@@ -120,6 +120,8 @@ func sshConnect(user, addr, keypath string) (client *ssh.Client) {
 	config := &ssh.ClientConfig{
 		User: user,
 		Auth: auths,
+		HostKeyCallback: func(string, net.Addr, ssh.PublicKey) error {
+	return nil
 	}
 	client, err := ssh.Dial("tcp", addr, config)
 	if err != nil {
