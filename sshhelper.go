@@ -121,8 +121,7 @@ func sshConnect(user, addr, keypath string) (client *ssh.Client) {
 		User: user,
 		Auth: auths,
 		HostKeyCallback: func(string, net.Addr, ssh.PublicKey) error {
-			return nil
-		},
+			return nil},
 	}
 	client, err := ssh.Dial("tcp", addr, config)
 	if err != nil {
